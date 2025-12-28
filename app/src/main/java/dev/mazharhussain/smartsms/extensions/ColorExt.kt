@@ -1,4 +1,4 @@
-package dev.mazharhussain.smartsms.ui.extensions
+package dev.mazharhussain.smartsms.extensions
 
 import androidx.compose.ui.graphics.Color
 

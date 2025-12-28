@@ -1,4 +1,4 @@
-package dev.mazharhussain.smartsms.ui
+package dev.mazharhussain.smartsms.ui.conversations
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -26,7 +26,9 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import dev.mazharhussain.smartsms.ui.extensions.withAlpha
+import dev.mazharhussain.smartsms.data.Message
+import dev.mazharhussain.smartsms.extensions.withAlpha
+import dev.mazharhussain.smartsms.data.mockList
 import dev.mazharhussain.smartsms.ui.theme.AppTheme
 
 @Composable
