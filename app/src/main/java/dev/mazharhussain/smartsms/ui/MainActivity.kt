@@ -9,7 +9,6 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import dev.mazharhussain.smartsms.ui.theme.AppTheme
 import kotlinx.coroutines.Dispatchers
@@ -35,7 +34,7 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             AppTheme {
-                HomeScreen(viewModel.threads.collectAsStateWithLifecycle().value)
+                AppUI(viewModel)
             }
         }
     }
