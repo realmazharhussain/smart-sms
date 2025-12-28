@@ -3,6 +3,7 @@ activityCompose = "1.12.2"
 agp = "8.13.2"
 composeBom = "2025.12.01"
 coreKtx = "1.17.0"
+koinBom = "4.1.1"
 kotlin = "2.3.0"
 lifecycle = "2.10.0"
 nav3 = "1.0.0"
@@ -22,6 +23,9 @@ androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = 
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle" }
 androidx-lifecycle-viewmodel-navigation3 = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-navigation3", version.ref = "lifecycle" }
 androidx-navigation3-ui = { group = "androidx.navigation3", name = "navigation3-ui", version.ref = "nav3" }
+koin-android = { group = "io.insert-koin", name = "koin-android" }
+koin-androidx-compose = { group = "io.insert-koin", name = "koin-androidx-compose" }
+koin-bom = { group = "io.insert-koin", name = "koin-bom", version.ref = "koinBom" }
 kotlinx-serialization-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-core", version.ref = "serializationCore" }
 
 [bundles]
@@ -31,6 +35,7 @@ androidx-compose = [
     "androidx-compose-material-icons"
 ]
 androidx-nav3 = ["androidx-navigation3-ui", "androidx-lifecycle-viewmodel-navigation3"]
+koin = ["koin-android", "koin-androidx-compose"]
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

@@ -53,6 +53,8 @@ dependencies {
     implementation(libs.bundles.androidx.compose)
     implementation(libs.bundles.androidx.nav3)
     implementation(libs.kotlinx.serialization.core)
+    implementation(platform(libs.koin.bom))
+    implementation(libs.bundles.koin)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
 }
