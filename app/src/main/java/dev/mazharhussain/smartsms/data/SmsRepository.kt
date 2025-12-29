@@ -16,11 +16,13 @@ class SmsRepository(private val context: Context) {
     private suspend fun readSms(uri: Uri, selection: String? = null, sortOrder: String? = null) = withContext(context = Dispatchers.IO) {
         val contentResolver = requireNotNull(context.contentResolver)
         val cursor = requireNotNull(contentResolver.query(uri, Column.projection, selection, null, sortOrder))
-        cursor.use {
-            buildList(capacity = it.count) {
-                while (it.moveToNext()) {
-                    this += it.message
-                }
+        cursor.readAll()
+    }
+
+    private fun Cursor.readAll(): List<Message> = use {
+        buildList(capacity = it.count) {
+            while (it.moveToNext()) {
+                this += it.message
             }
         }
     }
