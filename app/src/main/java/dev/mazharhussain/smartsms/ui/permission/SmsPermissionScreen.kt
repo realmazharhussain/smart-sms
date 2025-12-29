@@ -22,7 +22,9 @@ import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.PermissionStatus
 import com.google.accompanist.permissions.rememberPermissionState
 import dev.mazharhussain.smartsms.BuildConfig
-import dev.mazharhussain.smartsms.ui.LocalBackStack
+import dev.mazharhussain.smartsms.ui.common.LocalBackStack
+import dev.mazharhussain.smartsms.ui.Screen
+import dev.mazharhussain.smartsms.ui.common.pop
 import dev.mazharhussain.smartsms.ui.theme.AppTheme
 
 @OptIn(ExperimentalPermissionsApi::class)
@@ -76,7 +78,7 @@ fun SmsPermissionScreen() {
     } else {
         val backStack = LocalBackStack.current
         LaunchedEffect(Unit) {
-            backStack.removeLastOrNull()
+            backStack.pop(Screen.SmsPermission)
         }
     }
 }

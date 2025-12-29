@@ -21,8 +21,9 @@ import com.google.accompanist.permissions.rememberPermissionState
 import dev.mazharhussain.smartsms.R
 import dev.mazharhussain.smartsms.data.Message
 import dev.mazharhussain.smartsms.data.mockList
-import dev.mazharhussain.smartsms.ui.LocalBackStack
+import dev.mazharhussain.smartsms.ui.common.LocalBackStack
 import dev.mazharhussain.smartsms.ui.Screen
+import dev.mazharhussain.smartsms.ui.common.push
 import dev.mazharhussain.smartsms.ui.theme.AppTheme
 import org.koin.androidx.compose.koinViewModel
 
@@ -38,7 +39,7 @@ fun ConversationsScreen() {
     } else {
         val backStack = LocalBackStack.current
         LaunchedEffect(Unit) {
-            backStack.add(Screen.SmsPermission)
+            backStack.push(Screen.SmsPermission)
         }
     }
 }

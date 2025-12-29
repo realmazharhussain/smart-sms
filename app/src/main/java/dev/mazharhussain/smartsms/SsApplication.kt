@@ -9,7 +9,7 @@ import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 import java.lang.ref.WeakReference
 
-class SmartSmsApp : Application() {
+class SsApplication : Application() {
     val coroutineScope = CoroutineScope(context = SupervisorJob())
 
     init { appRef = WeakReference(this) }
@@ -19,16 +19,16 @@ class SmartSmsApp : Application() {
 
         startKoin {
             androidLogger()
-            androidContext(androidContext = this@SmartSmsApp)
+            androidContext(androidContext = this@SsApplication)
             modules(modules = appModule)
         }
     }
 }
 
-var appRef: WeakReference<SmartSmsApp>? = null
+var appRef: WeakReference<SsApplication>? = null
     private set
 
-fun requireApp(): SmartSmsApp {
+fun requireApp(): SsApplication {
     val ref = requireNotNull(appRef) { "App not initialized yet!" }
     val app = requireNotNull(ref.get()) { "App already destroyed!" }
     return app
