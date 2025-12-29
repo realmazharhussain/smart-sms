@@ -4,6 +4,7 @@ import dev.mazharhussain.smartsms.SsApplication
 import dev.mazharhussain.smartsms.data.SmsRepository
 import dev.mazharhussain.smartsms.requireApp
 import dev.mazharhussain.smartsms.ui.conversations.ConversationsViewModel
+import dev.mazharhussain.smartsms.ui.thread.ThreadViewModel
 import kotlinx.coroutines.CoroutineScope
 import org.koin.core.module.dsl.singleOf
 import org.koin.core.module.dsl.viewModelOf
@@ -14,4 +15,5 @@ val appModule = module {
     single<CoroutineScope> { get<SsApplication>().coroutineScope }
     singleOf(constructor = ::SmsRepository)
     viewModelOf(constructor = ::ConversationsViewModel)
+    viewModelOf(constructor = ::ThreadViewModel)
 }

@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -29,11 +30,15 @@ import androidx.compose.ui.unit.sp
 import dev.mazharhussain.smartsms.data.Message
 import dev.mazharhussain.smartsms.extensions.withAlpha
 import dev.mazharhussain.smartsms.data.mockList
+import dev.mazharhussain.smartsms.ui.Screen
+import dev.mazharhussain.smartsms.ui.common.LocalBackStack
+import dev.mazharhussain.smartsms.ui.common.push
 import dev.mazharhussain.smartsms.ui.theme.AppTheme
 
 @Composable
 fun ConversationList(threads: List<Message>, modifier: Modifier = Modifier) {
     LazyColumn(
+        contentPadding = PaddingValues(horizontal = 4.dp, vertical = 12.dp),
         modifier = modifier.fillMaxSize()
     ) {
         items(threads) { message ->
@@ -44,12 +49,14 @@ fun ConversationList(threads: List<Message>, modifier: Modifier = Modifier) {
 
 @Composable
 fun ConversationListItem(message: Message, modifier: Modifier = Modifier) {
+    val backStack = LocalBackStack.current
+
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(16.dp),
         modifier = modifier
             .clip(CircleShape)
-            .clickable {}
+            .clickable { backStack.push(Screen.Thread(message.threadId)) }
             .padding(16.dp)
     ) {
         Column(

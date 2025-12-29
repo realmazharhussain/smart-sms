@@ -16,11 +16,13 @@ import dev.mazharhussain.smartsms.ui.common.rememberNavBackStackNavEntryDecorato
 import dev.mazharhussain.smartsms.ui.common.rememberSsNavBackStack
 import dev.mazharhussain.smartsms.ui.conversations.ConversationsScreen
 import dev.mazharhussain.smartsms.ui.permission.SmsPermissionScreen
+import dev.mazharhussain.smartsms.ui.thread.ThreadScreen
 import kotlinx.serialization.Serializable
 
 sealed interface Screen: NavKey {
-    @Serializable data object Conversations : Screen
     @Serializable data object SmsPermission : Screen
+    @Serializable data object Conversations : Screen
+    @Serializable data class Thread(val threadId: Long) : Screen
 }
 
 @Composable
@@ -41,6 +43,10 @@ fun SsAppUi() {
         entryProvider = entryProvider {
             entry<Screen.Conversations> {
                 ConversationsScreen()
+            }
+
+            entry<Screen.Thread> { params ->
+                ThreadScreen(params)
             }
 
             entry<Screen.SmsPermission>(

@@ -1,4 +1,4 @@
-package dev.mazharhussain.smartsms.ui.conversations
+package dev.mazharhussain.smartsms.ui.thread
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -17,16 +17,19 @@ import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import dev.mazharhussain.smartsms.R
 import dev.mazharhussain.smartsms.data.Message
 import dev.mazharhussain.smartsms.data.mockList
+import dev.mazharhussain.smartsms.ui.Screen
+import dev.mazharhussain.smartsms.ui.conversations.ConversationList
 import dev.mazharhussain.smartsms.ui.permission.WithSmsPermission
 import dev.mazharhussain.smartsms.ui.theme.AppTheme
 import org.koin.androidx.compose.koinViewModel
+import org.koin.core.parameter.parametersOf
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalPermissionsApi::class)
 @Composable
-fun ConversationsScreen() = WithSmsPermission {
-    val viewModel = koinViewModel<ConversationsViewModel>()
-    val threads by viewModel.threads.collectAsStateWithLifecycle()
-    ScreenContent(threads)
+fun ThreadScreen(params: Screen.Thread) = WithSmsPermission {
+        val viewModel = koinViewModel<ThreadViewModel> { parametersOf(params) }
+        val threads by viewModel.messages.collectAsStateWithLifecycle()
+        ScreenContent(threads)
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -46,6 +49,6 @@ private fun ScreenContent(threads: List<Message>) {
 
 @Preview
 @Composable
-private fun ConversationsScreenPreview() {
+private fun ThreadScreenPreview() {
     AppTheme { ScreenContent(threads = Message.mockList) }
 }
